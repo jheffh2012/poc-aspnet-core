@@ -62,10 +62,11 @@ namespace poc.AspNet.Core.MVC.Controllers
         public ActionResult Register()
         {
             var equipes = _mapper.Map<IEnumerable<Equipe>, IEnumerable<EquipeViewModel>>(_serviceEquipe.GetAll());
-            var model = new UsuarioViewModel {
+            var model = new UsuarioViewModel
+            {
                 Equipes = new SelectList(equipes, "Id", "Nome")
             };
-            
+
             return View(model);
         }
 
@@ -117,11 +118,11 @@ namespace poc.AspNet.Core.MVC.Controllers
                             new Claim(ClaimTypes.Name, model.Email)
                         };
                     var claimsIdentity = new ClaimsIdentity(
-                        claims, 
+                        claims,
                         CookieAuthenticationDefaults.AuthenticationScheme
                     );
 
-                    var authProperties = new AuthenticationProperties {  };
+                    var authProperties = new AuthenticationProperties { };
 
                     HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,

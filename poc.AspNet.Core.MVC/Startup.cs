@@ -33,7 +33,8 @@ namespace poc.AspNet.Core.MVC
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
 
-            services.AddMvc(config => {
+            services.AddMvc(config =>
+            {
                 config.EnableEndpointRouting = false;
             });
         }
@@ -55,9 +56,9 @@ namespace poc.AspNet.Core.MVC
             app.UseRouting();
 
             app.UseCookiePolicy(new CookiePolicyOptions
-                {
-                    MinimumSameSitePolicy = SameSiteMode.Strict,
-                }
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+            }
             );
 
             app.UseAuthentication();

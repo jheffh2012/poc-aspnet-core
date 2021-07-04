@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using AutoMapper;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using poc.AspNet.Core.MVC.Models.Map;
 
 namespace poc.AspNet.Core.MVC.Models.Extensions

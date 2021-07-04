@@ -36,7 +36,17 @@ namespace poc.AspNet.Core.Domain.Services
 
             var equipe = _serviceEquipe.GetById(calendario.IdEquipe, new string[] { "Usuarios" });
 
-            return eventoAtual.Confirmacoes.Count() > 0 ? (eventoAtual.Confirmacoes.Count() / equipe.Usuarios.Count()) * 100 : 0;
+            if (eventoAtual.Confirmacoes.Count() == 0 || equipe.Usuarios.Count() == 0)
+            {
+                return 0;
+            }
+
+            decimal confirmacoes = eventoAtual.Confirmacoes.Count();
+            decimal usuarios = equipe.Usuarios.Count();
+
+            decimal percentual = confirmacoes / usuarios;
+
+            return (percentual * 100);
         }
     }
 }

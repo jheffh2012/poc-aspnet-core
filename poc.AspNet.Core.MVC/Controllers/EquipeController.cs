@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using poc.AspNet.Core.Domain.Interfaces.Services;
 using poc.AspNet.Core.Ioc.Entities;
 using poc.AspNet.Core.MVC.Models;
