@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\poc.AspNet.Core.Domain.Interfaces\poc.AspNet.Core.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\poc.AspNet.Core.Domain\poc.AspNet.Core.Domain.csproj" />
+    <ProjectReference Include="..\poc.AspNet.Core.Ioc.EntityFramework\poc.AspNet.Core.Ioc.EntityFramework.csproj" />
+    <ProjectReference Include="..\poc.AspNet.Core.Ioc\poc.AspNet.Core.Ioc.csproj" />
+  </ItemGroup>
+
+</Project>

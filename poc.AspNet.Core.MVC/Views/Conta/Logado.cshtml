@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Logado";
+}
+
+    <h2>
+        @Html.Raw("Olá, bem vindo! " + ViewBag.DadosUsuario.Nome)
+    </h2>
+
+    <p>
+        @Html.Raw($"A temperatura em {ViewBag.PrevisaoTempo.Cidade} no momento é de {ViewBag.PrevisaoTempo.Temperatura} °C")
+    </p>
+
+    <h3>
+        Eventos Organizados
+    </h3>
+
+    <table class="table">
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.DadosUsuario.EventosOrganizados)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Ver Eventos", "Index", "Evento")
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <h2>
+        Eventos Confirmados
+    </h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.DadosUsuario.Confirmacoes)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Ver Eventos", "Index", "Evento", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
