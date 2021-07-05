@@ -2,6 +2,8 @@
 using poc.AspNet.Core.Ioc.Entities;
 using poc.AspNet.Core.Ioc.Repository;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace poc.AspNet.Core.Domain.Services
 {
@@ -38,6 +40,21 @@ namespace poc.AspNet.Core.Domain.Services
         public virtual void Delete(TEntity model)
         {
             _repository.Delete(model);
+        }
+
+        public async Task<TEntity> AddAsync(TEntity model, CancellationToken cancellationToken)
+        {
+            return await _repository.AddAsync(model, cancellationToken);
+        }
+
+        public async Task<TEntity> UpdateAsync(BaseModel id, TEntity model, CancellationToken cancellationToken)
+        {
+            return await _repository.UpdateAsync(id, model, cancellationToken);
+        }
+
+        public Task DeleteAsync(BaseModel id, CancellationToken cancellationToken)
+        {
+            return _repository.DeleteAsync(id, cancellationToken);
         }
     }
 }

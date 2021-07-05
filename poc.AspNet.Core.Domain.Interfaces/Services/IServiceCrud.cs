@@ -1,5 +1,7 @@
 ﻿using poc.AspNet.Core.Ioc.Entities;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace poc.AspNet.Core.Domain.Interfaces.Services
 {
@@ -10,5 +12,8 @@ namespace poc.AspNet.Core.Domain.Interfaces.Services
         void Add(TEntity model);
         void Update(TEntity model);
         void Delete(TEntity model);
+        Task<TEntity> AddAsync(TEntity model, CancellationToken cancellationToken);
+        Task<TEntity> UpdateAsync(BaseModel id, TEntity model, CancellationToken cancellationToken);
+        Task DeleteAsync(BaseModel id, CancellationToken cancellationToken);
     }
 }

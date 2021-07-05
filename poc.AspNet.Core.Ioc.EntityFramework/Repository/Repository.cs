@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace poc.AspNet.Core.Ioc.EntityFramework.Repository
 {
@@ -71,6 +73,35 @@ namespace poc.AspNet.Core.Ioc.EntityFramework.Repository
         {
             _dbContext.Entry(model).State = EntityState.Deleted;
             _dbContext.SaveChanges();
+        }
+
+        public async Task<TEntity> AddAsync(TEntity model, CancellationToken cancellationToken)
+        {
+            var retorno = await _dbContext.Set<TEntity>().AddAsync(model);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return retorno.Entity;
+        }
+
+        public async Task DeleteAsync(BaseModel id, CancellationToken cancellationToken)
+        {
+            var registro = await _dbContext.Set<TEntity>()
+                .AsNoTracking()
+                .FirstOrDefaultAsync(r => r.Id == id.Id);
+            if (registro == null)
+            {
+                throw new System.Exception("Registro não encontrado!");
+            }
+            _dbContext.Set<TEntity>().Remove(registro);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<TEntity> UpdateAsync(BaseModel id, TEntity model, CancellationToken cancellationToken)
+        {
+            model.Id = id.Id;
+            var registro = _dbContext.Set<TEntity>().Update(model);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+            return registro.Entity;
         }
     }
 }
