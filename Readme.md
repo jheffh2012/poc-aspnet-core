@@ -14,6 +14,9 @@ Este repositório contém código em AspNet MVC Core contendo as seguintes carac
 ## Instalando local ##
 
 O banco de dados esta disponível em: .\Database\Poc_AspNet_MVC_Core.mdf;
+
 Também foi disponibilizado o arquivo bkp do banco de dados;
+
 Certifique-se de que o SQL Server Express esteja instalado em sua máquina;
+
 O Arquivo de configuração ".\poc.AspNet.Core.MVC\appsettings.Development.json" deve estar apontando para o banco de dados;
