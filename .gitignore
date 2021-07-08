@@ -5,8 +5,6 @@ project.lock.json
 *.pyc
 nupkg/
 packages/
-*.mdf
-*.ldf
 
 # Visual Studio Code
 .vscode
